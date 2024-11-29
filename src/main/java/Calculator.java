@@ -20,7 +20,7 @@ public class Calculator {
         return a * b;
     }
 
-    public int solver() {
-        //TODO inser your realisation in method solver
+    public int solver(int a, int b, int c, int d) {
+        return add(dif(times(a, b), div(c, d)), dif(a, d));
     }
 }
