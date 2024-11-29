@@ -1,6 +1,6 @@
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 class CalculatorTest {
 
@@ -8,31 +8,38 @@ class CalculatorTest {
 
     @Test
     void add() {
-        int result = calculator.add(5, 3);
-        assertEquals(8, result);
+        assertEquals(5, calculator.add(2, 3));
+        assertEquals(-1, calculator.add(-2, 1));
+        assertEquals(0, calculator.add(0, 0));
     }
 
     @Test
     void dif() {
-        int result = calculator.dif(10, 8);
-        assertEquals(2, result);
+        assertEquals(1, calculator.dif(3, 2));
+        assertEquals(-3, calculator.dif(-1, 2));
+        assertEquals(0, calculator.dif(5, 5));
     }
 
     @Test
     void div() {
-        int result = calculator.div(2, 2);
-        assertEquals(1, result);
+        assertEquals(2, calculator.div(6, 3));
+        assertEquals(0, calculator.div(0, 5));
+        assertThrows(IllegalArgumentException.class,
+                () -> calculator.div(5, 0), "You can't divide by 0");
     }
 
     @Test
     void times() {
-        int result = calculator.times(5, 2);
-        assertEquals(10, result);
+        assertEquals(6, calculator.times(2, 3));
+        assertEquals(-6, calculator.times(-2, 3));
+        assertEquals(0, calculator.times(0, 5));
     }
 
     @Test
     void solver() {
-        int result = calculator.solver(5, 2, 3, 2);
-        assertEquals(1, result);
+        assertEquals(18, calculator.solver(4, 5, 8, 2));
+        assertEquals(11, calculator.solver(3, 4, 4, 2));
+        assertThrows(IllegalArgumentException.class,
+                () -> calculator.solver(3, 4, 4, 0), "You can't divide by 0");
     }
 }
